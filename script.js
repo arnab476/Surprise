@@ -29,9 +29,7 @@ const completePuzzle = document.getElementById("completePuzzle");
 
 const bgMusic = document.getElementById("bgMusic");
 
-/* =========================
-   FIRST CAKE SWIPE
-========================= */
+/* FIRST CAKE */
 
 let isDragging = false;
 
@@ -52,7 +50,7 @@ cake.addEventListener("mousemove",()=>{
   if(isDragging){
 
     cake.style.transform =
-    "scale(0.95) rotate(5deg)";
+    "scaleX(0.7) rotate(10deg)";
 
     setTimeout(()=>{
 
@@ -60,15 +58,13 @@ cake.addEventListener("mousemove",()=>{
 
       funnyScreen.classList.add("active");
 
-    },500);
+    },600);
 
   }
 
 });
 
-/* =========================
-   SKIP BUTTON
-========================= */
+/* SKIP BUTTON */
 
 skipBtn.addEventListener("mouseover",()=>{
 
@@ -78,7 +74,7 @@ skipBtn.addEventListener("mouseover",()=>{
 
     monkeyPopup.style.display = "none";
 
-  },1200);
+  },1000);
 
   const randomX = Math.random() * 500;
   const randomY = Math.random() * 500;
@@ -90,9 +86,7 @@ skipBtn.addEventListener("mouseover",()=>{
 
 });
 
-/* =========================
-   PUZZLE BUTTON
-========================= */
+/* PUZZLE */
 
 solveBtn.addEventListener("click",()=>{
 
@@ -102,9 +96,7 @@ solveBtn.addEventListener("click",()=>{
 
 });
 
-/* =========================
-   COMPLETE PUZZLE
-========================= */
+/* COMPLETE */
 
 completePuzzle.addEventListener("click",()=>{
 
@@ -114,9 +106,7 @@ completePuzzle.addEventListener("click",()=>{
 
 });
 
-/* =========================
-   FINAL CAKE CUT
-========================= */
+/* FINAL CAKE */
 
 let finalDragging = false;
 
