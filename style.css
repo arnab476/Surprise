@@ -23,8 +23,6 @@ linear-gradient(
 position:relative;
 }
 
-/* SCREEN */
-
 .screen{
 
 width:100%;
@@ -37,28 +35,28 @@ align-items:center;
 
 flex-direction:column;
 
-position:relative;
-
 padding:20px;
 
-z-index:2;
+position:relative;
 }
 
 .active{
 display:flex;
 }
 
-/* TEXT */
-
-.mainText{
+.mainText,
+.funnyTitle,
+.puzzleText,
+.birthdayText{
 
 font-family:
 'Great Vibes',
 cursive;
+}
+
+.mainText{
 
 font-size:58px;
-
-color:#222;
 
 margin-bottom:10px;
 }
@@ -67,17 +65,11 @@ margin-bottom:10px;
 
 font-size:18px;
 
-font-weight:600;
-
 margin-bottom:20px;
 }
 
 .funnyTitle,
 .puzzleText{
-
-font-family:
-'Great Vibes',
-cursive;
 
 font-size:58px;
 
@@ -86,19 +78,13 @@ margin-bottom:25px;
 
 .birthdayText{
 
-font-family:
-'Great Vibes',
-cursive;
-
-font-size:100px;
+font-size:90px;
 
 color:white;
 
 text-shadow:
 0px 0px 20px
 #ff3f8e;
-
-margin-bottom:20px;
 }
 
 /* CAKE */
@@ -134,15 +120,11 @@ left:50%;
 top:10%;
 
 transform:translateX(-50%);
-
-opacity:0;
 }
 
 .cakeCut .cakeCrack{
 
 height:80%;
-
-opacity:1;
 
 transition:0.5s;
 }
@@ -175,8 +157,6 @@ rotate(-20deg);
 
 z-index:5;
 
-cursor:grab;
-
 touch-action:none;
 }
 
@@ -204,15 +184,6 @@ color:white;
 font-size:18px;
 
 font-weight:700;
-
-cursor:pointer;
-}
-
-#completePuzzle{
-
-opacity:0.4;
-
-pointer-events:none;
 }
 
 /* MONKEY */
@@ -250,8 +221,6 @@ margin-bottom:20px;
 color:white;
 
 font-size:40px;
-
-font-weight:700;
 }
 
 /* PUZZLE */
@@ -287,18 +256,9 @@ border-radius:10px;
 
 border:2px solid white;
 
-cursor:grab;
+cursor:pointer;
 
 transition:0.2s;
-
-box-shadow:
-0px 4px 10px
-rgba(0,0,0,0.15);
-}
-
-.piece:hover{
-
-transform:scale(1.05);
 }
 
 /* CAROUSEL */
@@ -308,8 +268,6 @@ transform:scale(1.05);
 width:100%;
 
 overflow:hidden;
-
-margin-top:20px;
 }
 
 .carouselTrack{
@@ -332,8 +290,6 @@ height:520px;
 object-fit:cover;
 
 border-radius:30px;
-
-flex-shrink:0;
 }
 
 /* PLAYER */
@@ -350,32 +306,6 @@ background:white;
 padding:12px 18px;
 
 border-radius:20px;
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-}
-
-.bars{
-
-display:flex;
-
-gap:4px;
-}
-
-.bars span{
-
-width:5px;
-height:20px;
-
-background:#ff3f8e;
-
-border-radius:10px;
-
-animation:
-bounce 1s infinite;
 }
 
 /* PETALS */
@@ -385,8 +315,6 @@ bounce 1s infinite;
 position:fixed;
 
 inset:0;
-
-overflow:hidden;
 
 pointer-events:none;
 }
@@ -399,48 +327,6 @@ font-size:28px;
 
 animation:
 fall linear infinite;
-}
-
-/* SPARKLES */
-
-.sparkles{
-
-position:absolute;
-
-width:100%;
-height:100%;
-
-background-image:
-radial-gradient(
-white 2px,
-transparent 2px
-);
-
-background-size:
-40px 40px;
-
-opacity:0.5;
-}
-
-/* STAR */
-
-.starBlast{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-}
-
-.star{
-
-position:absolute;
-
-font-size:25px;
-
-animation:
-blast 1s linear forwards;
 }
 
 /* ANIMATION */
@@ -458,29 +344,12 @@ translateX(-50%);
 
 }
 
-@keyframes bounce{
-
-0%{
-height:10px;
-}
-
-50%{
-height:28px;
-}
-
-100%{
-height:10px;
-}
-
-}
-
 @keyframes fall{
 
 0%{
 
 transform:
-translateY(-120px)
-rotate(0deg);
+translateY(-120px);
 
 opacity:1;
 }
@@ -488,29 +357,7 @@ opacity:1;
 100%{
 
 transform:
-translateY(110vh)
-rotate(360deg);
-
-opacity:0;
-}
-
-}
-
-@keyframes blast{
-
-0%{
-
-transform:
-scale(0);
-
-opacity:1;
-}
-
-100%{
-
-transform:
-scale(2)
-translateY(-250px);
+translateY(110vh);
 
 opacity:0;
 }
@@ -543,20 +390,6 @@ width:320px;
 
 width:180px;
 height:320px;
-}
-
-.piece{
-
-width:68px;
-height:68px;
-
-background-size:
-340px 204px;
-}
-
-.puzzleGrid{
-
-width:360px;
 }
 
 #dragKnife,
