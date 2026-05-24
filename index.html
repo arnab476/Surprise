@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Birthday Cake 🎂</title>
+  <title>Birthday Surprise 🎂</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
@@ -17,22 +17,30 @@
     <source src="song.mp3" type="audio/mp3">
   </audio>
 
-  <!-- KNIFE CURSOR -->
+  <!-- KNIFE -->
   <img src="knife.png" id="knifeCursor">
 
-  <!-- CAKE SCREEN -->
+  <!-- SCREEN 1 -->
   <section id="cakeScreen" class="screen active">
 
-    <div class="cakeContainer">
+    <h1 class="mainText">
+      Jonmodine cake katte hobe je 🎂
+    </h1>
 
-      <img src="cake.png" id="cake">
+    <p class="instruction">
+      Right swipe korle cake katbe 😼
+    </p>
 
-    </div>
+    <img src="cake.png" id="cake">
 
   </section>
 
-  <!-- FUNNY SCREEN -->
+  <!-- SCREEN 2 -->
   <section id="funnyScreen" class="screen">
+
+    <h1 class="funnyTitle">
+      Age eta solve kor 😭
+    </h1>
 
     <div class="btnGroup">
 
@@ -48,19 +56,28 @@
 
   </section>
 
-  <!-- MONKEY POPUP -->
+  <!-- TEXT POPUP -->
   <div id="monkeyPopup">
 
-    <img src="monkey.jpg" class="monkey">
+    <div class="popupText">
+      Eto soja na 😼
+    </div>
 
   </div>
 
-  <!-- PUZZLE SCREEN -->
+  <!-- PUZZLE -->
   <section id="puzzleScreen" class="screen">
 
-    <div class="puzzleImageBox">
+    <h1 class="puzzleText">
+      Puzzle Solve Koro 😭
+    </h1>
 
-      <img src="photo1.jpg" class="puzzleImage">
+    <div class="puzzleGrid">
+
+      <div class="piece" draggable="true">1</div>
+      <div class="piece" draggable="true">2</div>
+      <div class="piece" draggable="true">3</div>
+      <div class="piece" draggable="true">4</div>
 
     </div>
 
@@ -73,11 +90,15 @@
   <!-- FINAL CAKE -->
   <section id="finalCakeScreen" class="screen">
 
-    <div class="cakeContainer">
+    <h1 class="mainText">
+      Ebar Cake Kato 😌
+    </h1>
 
-      <img src="cake.png" id="finalCake">
+    <p class="instruction">
+      Swipe swipe 😭
+    </p>
 
-    </div>
+    <img src="cake.png" id="finalCake">
 
   </section>
 
