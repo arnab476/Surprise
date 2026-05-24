@@ -1,5 +1,3 @@
-/* PETALS */
-
 const petals =
 document.querySelector(".petals");
 
@@ -52,7 +50,7 @@ document.getElementById("finalCakeScreen");
 const birthdayScreen =
 document.getElementById("birthdayScreen");
 
-/* ELEMENT */
+/* ELEMENTS */
 
 const cake =
 document.getElementById("cake");
