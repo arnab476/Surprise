@@ -7,7 +7,7 @@ const icons = [
 "🌸","🍃","🌿","💮"
 ];
 
-for(let i=0;i<50;i++){
+for(let i=0;i<60;i++){
 
 const span =
 document.createElement("span");
@@ -22,14 +22,20 @@ Math.random()*icons.length
 span.style.left =
 Math.random()*100 + "%";
 
+span.style.top =
+Math.random()*-100 + "vh";
+
 span.style.animationDuration =
 5 + Math.random()*10 + "s";
+
+span.style.animationDelay =
+Math.random()*5 + "s";
 
 petals.appendChild(span);
 
 }
 
-/* SCREENS */
+/* SCREEN */
 
 const cakeScreen =
 document.getElementById("cakeScreen");
@@ -46,7 +52,7 @@ document.getElementById("finalCakeScreen");
 const birthdayScreen =
 document.getElementById("birthdayScreen");
 
-/* ELEMENTS */
+/* ELEMENT */
 
 const cake =
 document.getElementById("cake");
@@ -186,7 +192,7 @@ renderPuzzle();
 /* SKIP */
 
 skipBtn.addEventListener(
-"mouseover",
+"click",
 ()=>{
 
 monkeyPopup.style.display =
@@ -197,7 +203,7 @@ setTimeout(()=>{
 monkeyPopup.style.display =
 "none";
 
-},1200);
+},1500);
 
 });
 
@@ -255,10 +261,10 @@ const touch =
 e.touches[0];
 
 dragKnife.style.left =
-touch.clientX - 120 + "px";
+touch.clientX - 80 + "px";
 
 dragKnife.style.top =
-touch.clientY - 80 + "px";
+touch.clientY - 50 + "px";
 
 const cakeRect =
 cake.getBoundingClientRect();
@@ -323,10 +329,10 @@ const touch =
 e.touches[0];
 
 dragKnifeFinal.style.left =
-touch.clientX - 120 + "px";
+touch.clientX - 80 + "px";
 
 dragKnifeFinal.style.top =
-touch.clientY - 80 + "px";
+touch.clientY - 50 + "px";
 
 const cakeRect =
 finalCake.getBoundingClientRect();
