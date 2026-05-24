@@ -29,25 +29,46 @@ const completePuzzle = document.getElementById("completePuzzle");
 
 const bgMusic = document.getElementById("bgMusic");
 
-/* FIRST CAKE */
+/* =========================
+   FIRST CAKE SWIPE
+========================= */
 
-cake.addEventListener("contextmenu",(e)=>{
+let isDragging = false;
 
-  e.preventDefault();
+cake.addEventListener("mousedown",()=>{
 
-  cake.style.transform = "scale(0.95) rotate(3deg)";
-
-  setTimeout(()=>{
-
-    cakeScreen.classList.remove("active");
-
-    funnyScreen.classList.add("active");
-
-  },500);
+  isDragging = true;
 
 });
 
-/* SKIP BUTTON */
+document.addEventListener("mouseup",()=>{
+
+  isDragging = false;
+
+});
+
+cake.addEventListener("mousemove",()=>{
+
+  if(isDragging){
+
+    cake.style.transform =
+    "scale(0.95) rotate(5deg)";
+
+    setTimeout(()=>{
+
+      cakeScreen.classList.remove("active");
+
+      funnyScreen.classList.add("active");
+
+    },500);
+
+  }
+
+});
+
+/* =========================
+   SKIP BUTTON
+========================= */
 
 skipBtn.addEventListener("mouseover",()=>{
 
@@ -69,7 +90,9 @@ skipBtn.addEventListener("mouseover",()=>{
 
 });
 
-/* PUZZLE */
+/* =========================
+   PUZZLE BUTTON
+========================= */
 
 solveBtn.addEventListener("click",()=>{
 
@@ -79,7 +102,9 @@ solveBtn.addEventListener("click",()=>{
 
 });
 
-/* COMPLETE */
+/* =========================
+   COMPLETE PUZZLE
+========================= */
 
 completePuzzle.addEventListener("click",()=>{
 
@@ -89,23 +114,41 @@ completePuzzle.addEventListener("click",()=>{
 
 });
 
-/* FINAL CAKE */
+/* =========================
+   FINAL CAKE CUT
+========================= */
 
-finalCake.addEventListener("contextmenu",(e)=>{
+let finalDragging = false;
 
-  e.preventDefault();
+finalCake.addEventListener("mousedown",()=>{
 
-  finalCake.style.transform =
-  "scaleX(0.7) rotate(8deg)";
+  finalDragging = true;
 
-  setTimeout(()=>{
+});
 
-    finalCakeScreen.classList.remove("active");
+document.addEventListener("mouseup",()=>{
 
-    birthdayScreen.classList.add("active");
+  finalDragging = false;
 
-    bgMusic.play();
+});
 
-  },700);
+finalCake.addEventListener("mousemove",()=>{
+
+  if(finalDragging){
+
+    finalCake.style.transform =
+    "scaleX(0.7) rotate(8deg)";
+
+    setTimeout(()=>{
+
+      finalCakeScreen.classList.remove("active");
+
+      birthdayScreen.classList.add("active");
+
+      bgMusic.play();
+
+    },700);
+
+  }
 
 });
