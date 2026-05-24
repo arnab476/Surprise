@@ -23,6 +23,8 @@ linear-gradient(
 position:relative;
 }
 
+/* SCREEN */
+
 .screen{
 
 width:100%;
@@ -43,6 +45,8 @@ position:relative;
 .active{
 display:flex;
 }
+
+/* TEXT */
 
 .mainText,
 .funnyTitle,
@@ -66,6 +70,8 @@ margin-bottom:10px;
 font-size:18px;
 
 margin-bottom:20px;
+
+font-weight:600;
 }
 
 .funnyTitle,
@@ -129,7 +135,8 @@ height:80%;
 transition:0.5s;
 }
 
-.cakeCut img{
+.cakeCut #cake,
+.cakeCut #finalCake{
 
 transform:
 scale(0.85)
@@ -158,6 +165,8 @@ rotate(-20deg);
 z-index:5;
 
 touch-action:none;
+
+user-select:none;
 }
 
 /* BUTTON */
@@ -245,7 +254,7 @@ width:68px;
 height:68px;
 
 background-image:
-url("./photo21.jpg");
+url('./photo21.jpg');
 
 background-size:
 340px 204px;
@@ -259,6 +268,20 @@ border:2px solid white;
 cursor:pointer;
 
 transition:0.2s;
+}
+
+.piece.selected{
+
+outline:4px solid yellow;
+}
+
+/* COMPLETE BUTTON */
+
+#completePuzzle{
+
+opacity:1;
+
+pointer-events:auto;
 }
 
 /* CAROUSEL */
@@ -327,6 +350,27 @@ font-size:28px;
 
 animation:
 fall linear infinite;
+}
+
+/* SPARKLES */
+
+.sparkles{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+background-image:
+radial-gradient(
+white 2px,
+transparent 2px
+);
+
+background-size:
+40px 40px;
+
+opacity:0.5;
 }
 
 /* ANIMATION */
@@ -398,6 +442,11 @@ height:320px;
 width:80px;
 
 left:-70px;
+}
+
+.puzzleGrid{
+
+width:360px;
 }
 
 }
