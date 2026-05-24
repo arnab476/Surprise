@@ -29,7 +29,7 @@ petals.appendChild(span);
 
 }
 
-/* SCREEN */
+/* SCREENS */
 
 const cakeScreen =
 document.getElementById("cakeScreen");
@@ -131,7 +131,7 @@ piece.addEventListener(
 "click",
 ()=>{
 
-selectPiece(index);
+selectPiece(index,piece);
 
 });
 
@@ -143,11 +143,20 @@ puzzleGrid.appendChild(piece);
 
 let firstPiece = null;
 
-function selectPiece(index){
+function selectPiece(index,piece){
+
+const allPieces =
+document.querySelectorAll(".piece");
+
+allPieces.forEach((p)=>{
+p.classList.remove("selected");
+});
 
 if(firstPiece === null){
 
 firstPiece = index;
+
+piece.classList.add("selected");
 
 }
 
@@ -173,33 +182,6 @@ renderPuzzle();
 }
 
 renderPuzzle();
-
-/* CAKE CUT */
-
-function cutCake(){
-
-document
-.querySelector(".cakeArea")
-.classList.add("cakeCut");
-
-setTimeout(()=>{
-
-cakeScreen.classList.remove(
-"active"
-);
-
-funnyScreen.classList.add(
-"active"
-);
-
-},700);
-
-}
-
-dragKnife.addEventListener(
-"touchmove",
-cutCake
-);
 
 /* SKIP */
 
@@ -251,9 +233,113 @@ finalCakeScreen.classList.add(
 
 });
 
+/* FIRST CAKE */
+
+let draggingKnife = false;
+
+dragKnife.addEventListener(
+"touchstart",
+()=>{
+
+draggingKnife = true;
+
+});
+
+dragKnife.addEventListener(
+"touchmove",
+(e)=>{
+
+if(!draggingKnife) return;
+
+const touch =
+e.touches[0];
+
+dragKnife.style.left =
+touch.clientX - 120 + "px";
+
+dragKnife.style.top =
+touch.clientY - 80 + "px";
+
+const cakeRect =
+cake.getBoundingClientRect();
+
+if(
+
+touch.clientX > cakeRect.left &&
+touch.clientX < cakeRect.right &&
+
+touch.clientY > cakeRect.top &&
+touch.clientY < cakeRect.bottom
+
+){
+
+document
+.querySelector(".cakeArea")
+.classList.add("cakeCut");
+
+setTimeout(()=>{
+
+cakeScreen.classList.remove(
+"active"
+);
+
+funnyScreen.classList.add(
+"active"
+);
+
+},700);
+
+}
+
+});
+
+dragKnife.addEventListener(
+"touchend",
+()=>{
+
+draggingKnife = false;
+
+});
+
 /* FINAL CAKE */
 
-function finalCut(){
+let draggingKnife2 = false;
+
+dragKnifeFinal.addEventListener(
+"touchstart",
+()=>{
+
+draggingKnife2 = true;
+
+});
+
+dragKnifeFinal.addEventListener(
+"touchmove",
+(e)=>{
+
+if(!draggingKnife2) return;
+
+const touch =
+e.touches[0];
+
+dragKnifeFinal.style.left =
+touch.clientX - 120 + "px";
+
+dragKnifeFinal.style.top =
+touch.clientY - 80 + "px";
+
+const cakeRect =
+finalCake.getBoundingClientRect();
+
+if(
+
+touch.clientX > cakeRect.left &&
+touch.clientX < cakeRect.right &&
+
+touch.clientY > cakeRect.top &&
+touch.clientY < cakeRect.bottom
+
+){
 
 document
 .querySelectorAll(".cakeArea")[1]
@@ -275,7 +361,12 @@ bgMusic.play();
 
 }
 
+});
+
 dragKnifeFinal.addEventListener(
-"touchmove",
-finalCut
-);
+"touchend",
+()=>{
+
+draggingKnife2 = false;
+
+});
