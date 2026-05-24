@@ -29,6 +29,18 @@ const completePuzzle = document.getElementById("completePuzzle");
 
 const bgMusic = document.getElementById("bgMusic");
 
+/* REAL PUZZLE */
+
+const puzzleGrid =
+document.querySelector(".puzzleGrid");
+
+puzzleGrid.innerHTML = `
+  <div class="piece piece3"></div>
+  <div class="piece piece1"></div>
+  <div class="piece piece4"></div>
+  <div class="piece piece2"></div>
+`;
+
 /* FIRST CAKE */
 
 let isDragging = false;
@@ -49,8 +61,7 @@ cake.addEventListener("mousemove",()=>{
 
   if(isDragging){
 
-    cake.style.transform =
-    "scaleX(0.7) rotate(10deg)";
+    cake.classList.add("cakeCut");
 
     setTimeout(()=>{
 
@@ -58,7 +69,9 @@ cake.addEventListener("mousemove",()=>{
 
       funnyScreen.classList.add("active");
 
-    },600);
+      cake.classList.remove("cakeCut");
+
+    },700);
 
   }
 
@@ -68,13 +81,20 @@ cake.addEventListener("mousemove",()=>{
 
 skipBtn.addEventListener("mouseover",()=>{
 
+  monkeyPopup.innerHTML = `
+    <img src="monkey.jpg" class="monkey">
+    <div class="popupText">
+      Eto soja na 😭
+    </div>
+  `;
+
   monkeyPopup.style.display = "flex";
 
   setTimeout(()=>{
 
     monkeyPopup.style.display = "none";
 
-  },1000);
+  },1200);
 
   const randomX = Math.random() * 500;
   const randomY = Math.random() * 500;
@@ -126,8 +146,7 @@ finalCake.addEventListener("mousemove",()=>{
 
   if(finalDragging){
 
-    finalCake.style.transform =
-    "scaleX(0.7) rotate(8deg)";
+    finalCake.classList.add("cakeCut");
 
     setTimeout(()=>{
 
@@ -136,6 +155,8 @@ finalCake.addEventListener("mousemove",()=>{
       birthdayScreen.classList.add("active");
 
       bgMusic.play();
+
+      finalCake.classList.remove("cakeCut");
 
     },700);
 
