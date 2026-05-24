@@ -15,6 +15,47 @@ e.clientY + "px";
 
 });
 
+/* PETALS */
+
+const petals =
+document.querySelector(
+".petals"
+);
+
+const icons = [
+"🌸",
+"🍃",
+"🌿",
+"💮"
+];
+
+for(let i=0;i<50;i++){
+
+const span =
+document.createElement(
+"span"
+);
+
+span.innerHTML =
+icons[
+Math.floor(
+Math.random()*icons.length
+)
+];
+
+span.style.left =
+Math.random()*100 + "%";
+
+span.style.animationDuration =
+5 + Math.random()*10 + "s";
+
+span.style.animationDelay =
+Math.random()*5 + "s";
+
+petals.appendChild(span);
+
+}
+
 /* SCREENS */
 
 const cakeScreen =
@@ -81,39 +122,150 @@ document.getElementById(
 
 /* PUZZLE */
 
-const pieces =
-document.querySelectorAll(
-".piece"
+const puzzleGrid =
+document.querySelector(
+".puzzleGrid"
 );
 
 const positions = [
 
 "0px 0px",
-"-68px 0px",
-"-136px 0px",
-"-204px 0px",
-"-272px 0px",
+"-65px 0px",
+"-130px 0px",
+"-195px 0px",
+"-260px 0px",
 
-"0px -68px",
-"-68px -68px",
-"-136px -68px",
-"-204px -68px",
-"-272px -68px"
+"0px -65px",
+"-65px -65px",
+"-130px -65px",
+"-195px -65px",
+"-260px -65px"
 
 ];
 
-pieces.forEach((piece,index)=>{
+let shuffled =
+positions.sort(
+()=>Math.random()-0.5
+);
 
-piece.style.backgroundPosition =
-positions[
-Math.floor(
-Math.random()*10
-)
-];
+shuffled.forEach((pos)=>{
+
+const div =
+document.createElement(
+"div"
+);
+
+div.className =
+"piece";
+
+div.style.backgroundPosition =
+pos;
+
+puzzleGrid.appendChild(div);
 
 });
 
+/* STAR BLAST */
+
+function createStars(){
+
+const blast =
+document.createElement(
+"div"
+);
+
+blast.className =
+"starBlast";
+
+for(let i=0;i<25;i++){
+
+const star =
+document.createElement(
+"div"
+);
+
+star.className =
+"star";
+
+star.innerHTML =
+"✨";
+
+star.style.left =
+Math.random()*100 + "%";
+
+star.style.top =
+Math.random()*100 + "%";
+
+star.style.animationDelay =
+Math.random()*0.5 + "s";
+
+blast.appendChild(star);
+
+}
+
+document.body.appendChild(
+blast
+);
+
+setTimeout(()=>{
+
+blast.remove();
+
+},1200);
+
+}
+
 /* FIRST CAKE */
+
+let startX = 0;
+
+cake.addEventListener(
+"touchstart",
+(e)=>{
+
+startX =
+e.touches[0].clientX;
+
+});
+
+cake.addEventListener(
+"touchmove",
+(e)=>{
+
+let moveX =
+e.touches[0].clientX;
+
+if(moveX - startX > 100){
+
+document
+.querySelectorAll(
+".cakeWrap"
+)[0]
+.classList.add(
+"cakeCut"
+);
+
+createStars();
+
+setTimeout(()=>{
+
+cakeScreen
+.classList.remove(
+"active"
+);
+
+funnyScreen
+.classList.add(
+"active"
+);
+
+},700);
+
+}
+
+});
+
+/* DESKTOP */
 
 let isDragging = false;
 
@@ -140,8 +292,14 @@ cake.addEventListener(
 if(isDragging){
 
 document
-.querySelector(".cakeWrap")
-.classList.add("cakeCut");
+.querySelectorAll(
+".cakeWrap"
+)[0]
+.classList.add(
+"cakeCut"
+);
+
+createStars();
 
 setTimeout(()=>{
 
@@ -161,7 +319,7 @@ funnyScreen
 
 });
 
-/* SKIP BUTTON */
+/* SKIP */
 
 skipBtn.addEventListener(
 "mouseover",
@@ -179,7 +337,7 @@ monkeyPopup.style.display =
 
 });
 
-/* PUZZLE OPEN */
+/* SOLVE */
 
 solveBtn.addEventListener(
 "click",
@@ -217,32 +375,35 @@ finalCakeScreen
 
 /* FINAL CAKE */
 
-let finalDragging = false;
+let finalStart = 0;
 
 finalCake.addEventListener(
-"mousedown",
-()=>{
+"touchstart",
+(e)=>{
 
-finalDragging = true;
-
-});
-
-document.addEventListener(
-"mouseup",
-()=>{
-
-finalDragging = false;
+finalStart =
+e.touches[0].clientX;
 
 });
 
 finalCake.addEventListener(
-"mousemove",
-()=>{
+"touchmove",
+(e)=>{
 
-if(finalDragging){
+let moveX =
+e.touches[0].clientX;
 
-finalCake.style.transform =
-"scale(0.8) rotate(8deg)";
+if(moveX - finalStart > 100){
+
+document
+.querySelectorAll(
+".cakeWrap"
+)[1]
+.classList.add(
+"cakeCut"
+);
+
+createStars();
 
 setTimeout(()=>{
 
