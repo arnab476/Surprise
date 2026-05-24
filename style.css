@@ -7,21 +7,20 @@
 body{
   overflow:hidden;
 
-  cursor:none;
-
   font-family:sans-serif;
 
-  background:linear-gradient(
+  cursor:none;
+
+  background:
+  linear-gradient(
   135deg,
   #fff7c7,
   #ffe066,
   #ffffff
   );
-
-  background-size:400% 400%;
-
-  animation:bgMove 8s infinite;
 }
+
+/* SCREEN */
 
 .screen{
   width:100%;
@@ -29,11 +28,10 @@ body{
 
   display:none;
 
-  flex-direction:column;
   justify-content:center;
   align-items:center;
 
-  text-align:center;
+  flex-direction:column;
 
   position:relative;
 
@@ -47,9 +45,7 @@ body{
 /* TEXT */
 
 .mainText{
-  font-size:38px;
-
-  color:#222;
+  font-size:34px;
 
   margin-bottom:10px;
 }
@@ -57,42 +53,11 @@ body{
 .instruction{
   font-size:18px;
 
-  color:#444;
-
   margin-bottom:20px;
 }
 
 .funnyTitle{
   font-size:40px;
-
-  margin-bottom:30px;
-}
-
-.puzzleText{
-  font-size:35px;
-
-  margin-bottom:25px;
-}
-
-/* CAKE */
-
-#cake,
-#finalCake{
-  width:650px;
-  max-width:90vw;
-
-  animation:float 2s infinite ease-in-out;
-
-  transition:0.5s ease;
-}
-
-.cakeCut{
-  transform:
-  translateX(120px)
-  rotate(15deg)
-  scale(0.9);
-
-  opacity:0;
 }
 
 /* KNIFE */
@@ -102,11 +67,58 @@ body{
 
   position:fixed;
 
-  z-index:9999;
+  z-index:99999;
 
   pointer-events:none;
 
-  transform:translate(-50%,-50%) rotate(-20deg);
+  transform:
+  translate(-50%,-50%)
+  rotate(-20deg);
+}
+
+/* CAKE */
+
+#cake,
+#finalCake{
+  width:550px;
+
+  transition:1s;
+}
+
+.cakeWrap{
+  position:relative;
+}
+
+.cakeCrack{
+  position:absolute;
+
+  width:8px;
+  height:0%;
+
+  background:white;
+
+  left:50%;
+  top:10%;
+
+  transform:translateX(-50%);
+
+  opacity:0;
+}
+
+.cakeCut .cakeCrack{
+  height:80%;
+
+  opacity:1;
+
+  transition:0.6s;
+}
+
+.cakeCut img{
+  transform:
+  scale(0.9)
+  rotate(6deg);
+
+  opacity:0;
 }
 
 /* BUTTON */
@@ -115,6 +127,8 @@ body{
   display:flex;
 
   gap:20px;
+
+  margin-top:30px;
 }
 
 button{
@@ -133,10 +147,12 @@ button{
 
   cursor:pointer;
 
-  box-shadow:0px 10px 20px rgba(0,0,0,0.2);
+  box-shadow:
+  0px 10px 20px
+  rgba(0,0,0,0.2);
 }
 
-/* POPUP */
+/* MONKEY */
 
 #monkeyPopup{
   position:fixed;
@@ -150,113 +166,182 @@ button{
   justify-content:center;
   align-items:center;
 
-  background:rgba(0,0,0,0.88);
+  background:
+  rgba(0,0,0,0.9);
 
-  z-index:999;
+  z-index:9999;
 }
 
 .monkey{
-  width:260px;
+  width:250px;
 
-  border-radius:25px;
+  border-radius:20px;
 
   margin-bottom:20px;
-
-  animation:zoom 0.3s;
 }
 
 .popupText{
   color:white;
 
   font-size:42px;
-  font-weight:bold;
 }
 
 /* PUZZLE */
 
+.puzzleText{
+  font-size:35px;
+
+  margin-bottom:20px;
+}
+
 .puzzleGrid{
-  width:320px;
-  height:320px;
+  width:340px;
 
   display:grid;
 
-  grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr;
+  grid-template-columns:
+  repeat(5,1fr);
 
-  gap:5px;
+  gap:3px;
 
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 .piece{
-  width:100%;
-  height:100%;
+  width:65px;
+  height:65px;
 
-  background-image:url('photo4.jpg');
+  background-image:
+  url('photo21.jpg');
 
-  background-size:320px 320px;
+  background-size:
+  340px 130px;
 
-  border-radius:12px;
+  border-radius:6px;
 
   cursor:grab;
-
-  border:2px solid white;
 }
 
-.piece1{
-  background-position:0 0;
+/* CAROUSEL */
+
+.carousel{
+  width:100%;
+
+  overflow:hidden;
+
+  margin-top:20px;
 }
 
-.piece2{
-  background-position:-160px 0;
+.carouselTrack{
+  display:flex;
+
+  gap:20px;
+
+  width:max-content;
+
+  animation:
+  scroll 60s linear infinite;
 }
 
-.piece3{
-  background-position:0 -160px;
+.carouselTrack img{
+  width:300px;
+  height:520px;
+
+  object-fit:cover;
+
+  border-radius:30px;
+
+  box-shadow:
+  0px 10px 20px
+  rgba(0,0,0,0.2);
 }
 
-.piece4{
-  background-position:-160px -160px;
-}
-
-/* FINAL */
+/* BIRTHDAY */
 
 .birthdayText{
   font-size:70px;
 
   color:white;
 
-  text-shadow:0px 0px 20px #ff3f8e;
+  text-shadow:
+  0px 0px 20px
+  #ff3f8e;
 
-  margin-bottom:25px;
-
-  z-index:2;
-}
-
-.gallery{
-  width:95%;
-
-  display:grid;
-
-  grid-template-columns:1fr 1fr;
-
-  gap:20px;
+  margin-bottom:20px;
 
   z-index:2;
 }
 
-.gallery img{
+/* PLAYER */
+
+.musicPlayer{
+  position:absolute;
+
+  bottom:20px;
+  right:20px;
+
+  background:white;
+
+  padding:12px 18px;
+
+  border-radius:20px;
+
+  display:flex;
+
+  align-items:center;
+
+  gap:15px;
+
+  box-shadow:
+  0px 10px 20px
+  rgba(0,0,0,0.2);
+}
+
+.bars{
+  display:flex;
+
+  gap:4px;
+}
+
+.bars span{
+  width:5px;
+  height:20px;
+
+  background:#ff3f8e;
+
+  border-radius:10px;
+
+  animation:
+  bounce 1s infinite;
+}
+
+.bars span:nth-child(2){
+  animation-delay:0.2s;
+}
+
+.bars span:nth-child(3){
+  animation-delay:0.4s;
+}
+
+.bars span:nth-child(4){
+  animation-delay:0.6s;
+}
+
+/* PETALS */
+
+.petals::before{
+  content:"🌸 🌿 🍃 🌸 🍃 🌿";
+
+  position:fixed;
+
   width:100%;
 
-  height:420px;
+  top:-20px;
 
-  object-fit:cover;
+  font-size:30px;
 
-  border-radius:30px;
-
-  animation:floatPhotos 2s infinite alternate;
-
-  box-shadow:0px 10px 25px rgba(0,0,0,0.2);
+  animation:
+  petalsMove 10s linear infinite;
 }
 
 /* SPARKLES */
@@ -268,81 +353,58 @@ button{
   height:100%;
 
   background-image:
-  radial-gradient(white 2px, transparent 2px);
+  radial-gradient(
+  white 2px,
+  transparent 2px
+  );
 
-  background-size:40px 40px;
+  background-size:
+  40px 40px;
 
-  animation:sparkleMove 1s linear infinite;
-
-  opacity:0.6;
+  opacity:0.5;
 }
 
-/* ANIMATION */
+/* ANIMATIONS */
 
-@keyframes float{
+@keyframes scroll{
+
+  from{
+    transform:translateX(0);
+  }
+
+  to{
+    transform:
+    translateX(-50%);
+  }
+
+}
+
+@keyframes petalsMove{
+
+  from{
+    transform:
+    translateY(-50px);
+  }
+
+  to{
+    transform:
+    translateY(110vh);
+  }
+
+}
+
+@keyframes bounce{
 
   0%{
-    transform:translateY(0px);
+    height:10px;
   }
 
   50%{
-    transform:translateY(-15px);
+    height:28px;
   }
 
   100%{
-    transform:translateY(0px);
-  }
-
-}
-
-@keyframes zoom{
-
-  from{
-    transform:scale(0);
-  }
-
-  to{
-    transform:scale(1);
-  }
-
-}
-
-@keyframes sparkleMove{
-
-  from{
-    background-position:0 0;
-  }
-
-  to{
-    background-position:100px 100px;
-  }
-
-}
-
-@keyframes bgMove{
-
-  0%{
-    background-position:0% 50%;
-  }
-
-  50%{
-    background-position:100% 50%;
-  }
-
-  100%{
-    background-position:0% 50%;
-  }
-
-}
-
-@keyframes floatPhotos{
-
-  from{
-    transform:translateY(0px);
-  }
-
-  to{
-    transform:translateY(-12px);
+    height:10px;
   }
 
 }
@@ -351,34 +413,27 @@ button{
 
 @media(max-width:768px){
 
-  .mainText{
-    font-size:28px;
-  }
-
-  .instruction{
-    font-size:16px;
-  }
-
-  .birthdayText{
-    font-size:42px;
-  }
-
   #cake,
   #finalCake{
     width:320px;
   }
 
-  .gallery img{
-    height:240px;
+  .birthdayText{
+    font-size:40px;
+  }
+
+  .carouselTrack img{
+    width:180px;
+    height:320px;
   }
 
   .piece{
-    background-size:260px 260px;
+    width:55px;
+    height:55px;
   }
 
   .puzzleGrid{
-    width:260px;
-    height:260px;
+    width:290px;
   }
 
 }
