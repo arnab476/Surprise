@@ -120,28 +120,35 @@ document.querySelector(
 ".puzzleGrid"
 );
 
-const correctOrder = [
+const cols = 5;
+const rows = 3;
 
-0,1,2,3,4,
-5,6,7,8,9
+const totalPieces =
+cols * rows;
 
-];
+let piecesArray = [];
 
-let currentOrder = [
+for(let i=0;i<totalPieces;i++){
 
-3,1,7,0,5,
-8,2,9,4,6
+piecesArray.push(i);
 
-];
+}
 
-function createPuzzle(){
+piecesArray.sort(
+()=>Math.random()-0.5
+);
+
+function renderPuzzle(){
 
 puzzleGrid.innerHTML = "";
 
-currentOrder.forEach((num,index)=>{
+piecesArray.forEach(
+(pieceValue,index)=>{
 
 const piece =
-document.createElement("div");
+document.createElement(
+"div"
+);
 
 piece.className =
 "piece";
@@ -151,29 +158,35 @@ piece.draggable = true;
 piece.dataset.index =
 index;
 
-piece.dataset.value =
-num;
+const pieceWidth = 68;
+const pieceHeight = 68;
 
 const x =
-(num % 5) * 65;
+(pieceValue % cols)
+* pieceWidth;
 
 const y =
-Math.floor(num / 5) * 65;
+Math.floor(
+pieceValue / cols
+)
+* pieceHeight;
 
 piece.style.backgroundPosition =
 `-${x}px -${y}px`;
 
-puzzleGrid.appendChild(piece);
+puzzleGrid.appendChild(
+piece
+);
 
 });
 
-addDragEvents();
+addPuzzleEvents();
 
 }
 
-let dragItem = null;
+let draggedPiece = null;
 
-function addDragEvents(){
+function addPuzzleEvents(){
 
 const pieces =
 document.querySelectorAll(
@@ -186,7 +199,8 @@ piece.addEventListener(
 "dragstart",
 ()=>{
 
-dragItem = piece;
+draggedPiece =
+piece;
 
 });
 
@@ -202,26 +216,28 @@ piece.addEventListener(
 "drop",
 ()=>{
 
-if(dragItem !== piece){
+if(
+draggedPiece !== piece
+){
 
 const from =
-dragItem.dataset.index;
+draggedPiece.dataset.index;
 
 const to =
 piece.dataset.index;
 
 [
-currentOrder[from],
-currentOrder[to]
+piecesArray[from],
+piecesArray[to]
 
 ] = [
 
-currentOrder[to],
-currentOrder[from]
+piecesArray[to],
+piecesArray[from]
 
 ];
 
-createPuzzle();
+renderPuzzle();
 
 checkPuzzle();
 
@@ -235,13 +251,27 @@ checkPuzzle();
 
 function checkPuzzle(){
 
-if(
-JSON.stringify(currentOrder)
-===
+let solved = true;
 
-JSON.stringify(correctOrder)
-
+for(
+let i=0;
+i<totalPieces;
+i++
 ){
+
+if(
+piecesArray[i] !== i
+){
+
+solved = false;
+
+break;
+
+}
+
+}
+
+if(solved){
 
 completePuzzle.style.opacity =
 "1";
@@ -250,15 +280,15 @@ completePuzzle.style.pointerEvents =
 "auto";
 
 completePuzzle.innerHTML =
-"Solved 😭🔥";
+"Puzzle Solved 😭🔥";
 
 }
 
 }
 
-createPuzzle();
+renderPuzzle();
 
-/* STAR BLAST */
+/* STARS */
 
 function createStars(){
 
@@ -348,76 +378,9 @@ cakeRect.right
 ){
 
 document
-.querySelectorAll(
-".cakeWrap"
-)[0]
-.classList.add(
-"cakeCut"
-);
-
-createStars();
-
-setTimeout(()=>{
-
-cakeScreen
-.classList.remove(
-"active"
-);
-
-funnyScreen
-.classList.add(
-"active"
-);
-
-},700);
-
-}
-
-}
-
-});
-
-dragKnife.addEventListener(
-"touchend",
-()=>{
-
-knifeDragging = false;
-
-});
-
-/* DESKTOP */
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-if(e.buttons === 1){
-
-dragKnife.style.left =
-e.clientX - 120 + "px";
-
-dragKnife.style.top =
-e.clientY - 80 + "px";
-
-const cakeRect =
-cake.getBoundingClientRect();
-
-if(
-
-e.clientX >
-cakeRect.left
-
-&&
-
-e.clientX <
-cakeRect.right
-
-){
-
-document
-.querySelectorAll(
-".cakeWrap"
-)[0]
+.querySelector(
+".cakeArea"
+)
 .classList.add(
 "cakeCut"
 );
@@ -542,76 +505,7 @@ cakeRect.right
 
 document
 .querySelectorAll(
-".cakeWrap"
-)[1]
-.classList.add(
-"cakeCut"
-);
-
-createStars();
-
-setTimeout(()=>{
-
-finalCakeScreen
-.classList.remove(
-"active"
-);
-
-birthdayScreen
-.classList.add(
-"active"
-);
-
-bgMusic.play();
-
-},700);
-
-}
-
-}
-
-});
-
-dragKnifeFinal.addEventListener(
-"touchend",
-()=>{
-
-knifeDragging2 = false;
-
-});
-
-/* DESKTOP */
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-if(e.buttons === 1){
-
-dragKnifeFinal.style.left =
-e.clientX - 120 + "px";
-
-dragKnifeFinal.style.top =
-e.clientY - 80 + "px";
-
-const cakeRect =
-finalCake.getBoundingClientRect();
-
-if(
-
-e.clientX >
-cakeRect.left
-
-&&
-
-e.clientX <
-cakeRect.right
-
-){
-
-document
-.querySelectorAll(
-".cakeWrap"
+".cakeArea"
 )[1]
 .classList.add(
 "cakeCut"
