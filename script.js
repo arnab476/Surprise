@@ -7,11 +7,15 @@ document.addEventListener("mousemove",(e)=>{
 
 });
 
+/* SCREENS */
+
 const cakeScreen = document.getElementById("cakeScreen");
 const funnyScreen = document.getElementById("funnyScreen");
 const puzzleScreen = document.getElementById("puzzleScreen");
 const finalCakeScreen = document.getElementById("finalCakeScreen");
 const birthdayScreen = document.getElementById("birthdayScreen");
+
+/* ELEMENTS */
 
 const cake = document.getElementById("cake");
 const finalCake = document.getElementById("finalCake");
@@ -31,9 +35,15 @@ cake.addEventListener("contextmenu",(e)=>{
 
   e.preventDefault();
 
-  cakeScreen.classList.remove("active");
+  cake.style.transform = "scale(0.95) rotate(3deg)";
 
-  funnyScreen.classList.add("active");
+  setTimeout(()=>{
+
+    cakeScreen.classList.remove("active");
+
+    funnyScreen.classList.add("active");
+
+  },500);
 
 });
 
@@ -47,9 +57,9 @@ skipBtn.addEventListener("mouseover",()=>{
 
     monkeyPopup.style.display = "none";
 
-  },1500);
+  },1200);
 
-  const randomX = Math.random() * 300;
+  const randomX = Math.random() * 500;
   const randomY = Math.random() * 500;
 
   skipBtn.style.position = "absolute";
@@ -85,7 +95,8 @@ finalCake.addEventListener("contextmenu",(e)=>{
 
   e.preventDefault();
 
-  finalCake.style.transform = "scaleX(0.8) rotate(5deg)";
+  finalCake.style.transform =
+  "scaleX(0.7) rotate(8deg)";
 
   setTimeout(()=>{
 
@@ -95,6 +106,6 @@ finalCake.addEventListener("contextmenu",(e)=>{
 
     bgMusic.play();
 
-  },1000);
+  },700);
 
 });
