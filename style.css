@@ -6,6 +6,7 @@
 
 body{
   overflow:hidden;
+
   cursor:none;
 
   font-family:sans-serif;
@@ -32,9 +33,9 @@ body{
   justify-content:center;
   align-items:center;
 
-  position:relative;
-
   text-align:center;
+
+  position:relative;
 
   padding:20px;
 }
@@ -43,19 +44,37 @@ body{
   display:flex;
 }
 
+/* TEXT */
+
 .mainText{
-  font-size:55px;
+  font-size:38px;
+
   color:#222;
 
-  margin-bottom:15px;
+  margin-bottom:10px;
 }
 
 .instruction{
-  font-size:24px;
+  font-size:18px;
+
   color:#444;
+
+  margin-bottom:20px;
+}
+
+.funnyTitle{
+  font-size:40px;
 
   margin-bottom:30px;
 }
+
+.puzzleText{
+  font-size:35px;
+
+  margin-bottom:25px;
+}
+
+/* CAKE */
 
 #cake,
 #finalCake{
@@ -64,8 +83,19 @@ body{
 
   animation:float 2s infinite ease-in-out;
 
-  transition:0.4s;
+  transition:0.5s ease;
 }
+
+.cakeCut{
+  transform:
+  translateX(120px)
+  rotate(15deg)
+  scale(0.9);
+
+  opacity:0;
+}
+
+/* KNIFE */
 
 #knifeCursor{
   width:80px;
@@ -79,8 +109,11 @@ body{
   transform:translate(-50%,-50%) rotate(-20deg);
 }
 
+/* BUTTON */
+
 .btnGroup{
   display:flex;
+
   gap:20px;
 }
 
@@ -95,13 +128,15 @@ button{
 
   color:white;
 
-  font-size:22px;
+  font-size:20px;
   font-weight:bold;
 
   cursor:pointer;
 
   box-shadow:0px 10px 20px rgba(0,0,0,0.2);
 }
+
+/* POPUP */
 
 #monkeyPopup{
   position:fixed;
@@ -110,94 +145,109 @@ button{
 
   display:none;
 
+  flex-direction:column;
+
   justify-content:center;
   align-items:center;
 
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.88);
 
   z-index:999;
+}
+
+.monkey{
+  width:260px;
+
+  border-radius:25px;
+
+  margin-bottom:20px;
+
+  animation:zoom 0.3s;
 }
 
 .popupText{
   color:white;
 
-  font-size:60px;
+  font-size:42px;
   font-weight:bold;
 }
 
-.puzzleText{
-  font-size:45px;
-
-  margin-bottom:30px;
-}
+/* PUZZLE */
 
 .puzzleGrid{
+  width:320px;
+  height:320px;
+
   display:grid;
 
   grid-template-columns:1fr 1fr;
+  grid-template-rows:1fr 1fr;
 
-  gap:10px;
+  gap:5px;
 
   margin-bottom:30px;
 }
 
 .piece{
-  width:170px;
-  height:230px;
+  width:100%;
+  height:100%;
 
-  border-radius:20px;
+  background-image:url('photo4.jpg');
 
-  background-size:cover;
+  background-size:320px 320px;
 
-  background-position:center;
+  border-radius:12px;
 
   cursor:grab;
 
-  box-shadow:0px 10px 20px rgba(0,0,0,0.2);
+  border:2px solid white;
 }
 
-.piece:nth-child(1){
-  background-image:url('photo1.jpg');
+.piece1{
+  background-position:0 0;
 }
 
-.piece:nth-child(2){
-  background-image:url('photo2.jpg');
+.piece2{
+  background-position:-160px 0;
 }
 
-.piece:nth-child(3){
-  background-image:url('photo3.jpg');
+.piece3{
+  background-position:0 -160px;
 }
 
-.piece:nth-child(4){
-  background-image:url('photo4.jpg');
+.piece4{
+  background-position:-160px -160px;
 }
+
+/* FINAL */
 
 .birthdayText{
-  font-size:90px;
+  font-size:70px;
 
   color:white;
 
   text-shadow:0px 0px 20px #ff3f8e;
 
-  margin-bottom:30px;
+  margin-bottom:25px;
 
   z-index:2;
 }
 
 .gallery{
-  width:90%;
+  width:95%;
 
-  display:flex;
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
 
   gap:20px;
-
-  overflow-x:auto;
 
   z-index:2;
 }
 
 .gallery img{
-  width:260px;
+  width:100%;
+
   height:420px;
 
   object-fit:cover;
@@ -206,10 +256,10 @@ button{
 
   animation:floatPhotos 2s infinite alternate;
 
-  box-shadow:0px 10px 20px rgba(0,0,0,0.2);
-
-  flex-shrink:0;
+  box-shadow:0px 10px 25px rgba(0,0,0,0.2);
 }
+
+/* SPARKLES */
 
 .sparkles{
   position:absolute;
@@ -227,11 +277,7 @@ button{
   opacity:0.6;
 }
 
-.funnyTitle{
-  font-size:60px;
-
-  margin-bottom:40px;
-}
+/* ANIMATION */
 
 @keyframes float{
 
@@ -245,6 +291,18 @@ button{
 
   100%{
     transform:translateY(0px);
+  }
+
+}
+
+@keyframes zoom{
+
+  from{
+    transform:scale(0);
+  }
+
+  to{
+    transform:scale(1);
   }
 
 }
@@ -289,14 +347,20 @@ button{
 
 }
 
+/* MOBILE */
+
 @media(max-width:768px){
 
   .mainText{
-    font-size:34px;
+    font-size:28px;
   }
 
   .instruction{
-    font-size:18px;
+    font-size:16px;
+  }
+
+  .birthdayText{
+    font-size:42px;
   }
 
   #cake,
@@ -304,18 +368,17 @@ button{
     width:320px;
   }
 
-  .birthdayText{
-    font-size:45px;
+  .gallery img{
+    height:240px;
   }
 
   .piece{
-    width:140px;
-    height:190px;
+    background-size:260px 260px;
   }
 
-  .gallery img{
-    width:180px;
-    height:300px;
+  .puzzleGrid{
+    width:260px;
+    height:260px;
   }
 
 }
