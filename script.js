@@ -1,20 +1,3 @@
-const knifeCursor =
-document.getElementById(
-"knifeCursor"
-);
-
-document.addEventListener(
-"mousemove",
-(e)=>{
-
-knifeCursor.style.left =
-e.clientX + "px";
-
-knifeCursor.style.top =
-e.clientY + "px";
-
-});
-
 /* PETALS */
 
 const petals =
@@ -127,43 +110,143 @@ document.querySelector(
 ".puzzleGrid"
 );
 
-const positions = [
+const correctOrder = [
 
-"0px 0px",
-"-65px 0px",
-"-130px 0px",
-"-195px 0px",
-"-260px 0px",
-
-"0px -65px",
-"-65px -65px",
-"-130px -65px",
-"-195px -65px",
-"-260px -65px"
+0,1,2,3,4,
+5,6,7,8,9
 
 ];
 
-let shuffled =
-positions.sort(
-()=>Math.random()-0.5
-);
+let currentOrder = [
 
-shuffled.forEach((pos)=>{
+3,1,7,0,5,
+8,2,9,4,6
 
-const div =
-document.createElement(
-"div"
-);
+];
 
-div.className =
+function createPuzzle(){
+
+puzzleGrid.innerHTML = "";
+
+currentOrder.forEach((num,index)=>{
+
+const piece =
+document.createElement("div");
+
+piece.className =
 "piece";
 
-div.style.backgroundPosition =
-pos;
+piece.draggable = true;
 
-puzzleGrid.appendChild(div);
+piece.dataset.index =
+index;
+
+piece.dataset.value =
+num;
+
+const x =
+(num % 5) * 65;
+
+const y =
+Math.floor(num / 5) * 65;
+
+piece.style.backgroundPosition =
+`-${x}px -${y}px`;
+
+puzzleGrid.appendChild(piece);
 
 });
+
+addDragEvents();
+
+}
+
+let dragItem = null;
+
+function addDragEvents(){
+
+const pieces =
+document.querySelectorAll(
+".piece"
+);
+
+pieces.forEach((piece)=>{
+
+piece.addEventListener(
+"dragstart",
+()=>{
+
+dragItem = piece;
+
+});
+
+piece.addEventListener(
+"dragover",
+(e)=>{
+
+e.preventDefault();
+
+});
+
+piece.addEventListener(
+"drop",
+()=>{
+
+if(dragItem !== piece){
+
+const from =
+dragItem.dataset.index;
+
+const to =
+piece.dataset.index;
+
+[
+currentOrder[from],
+currentOrder[to]
+
+] = [
+
+currentOrder[to],
+currentOrder[from]
+
+];
+
+createPuzzle();
+
+checkPuzzle();
+
+}
+
+});
+
+});
+
+}
+
+function checkPuzzle(){
+
+if(
+JSON.stringify(currentOrder)
+===
+
+JSON.stringify(correctOrder)
+
+){
+
+completePuzzle.style.opacity =
+"1";
+
+completePuzzle.style.pointerEvents =
+"auto";
+
+completePuzzle.innerHTML =
+"Solved 😭🔥";
+
+}
+
+}
+
+createPuzzle();
 
 /* STAR BLAST */
 
@@ -196,9 +279,6 @@ Math.random()*100 + "%";
 star.style.top =
 Math.random()*100 + "%";
 
-star.style.animationDelay =
-Math.random()*0.5 + "s";
-
 blast.appendChild(star);
 
 }
@@ -211,7 +291,7 @@ setTimeout(()=>{
 
 blast.remove();
 
-},1200);
+},1000);
 
 }
 
@@ -235,7 +315,7 @@ cake.addEventListener(
 let moveX =
 e.touches[0].clientX;
 
-if(moveX - startX > 100){
+if(Math.abs(moveX - startX) > 80){
 
 document
 .querySelectorAll(
@@ -267,29 +347,11 @@ funnyScreen
 
 /* DESKTOP */
 
-let isDragging = false;
-
-cake.addEventListener(
-"mousedown",
-()=>{
-
-isDragging = true;
-
-});
-
-document.addEventListener(
-"mouseup",
-()=>{
-
-isDragging = false;
-
-});
-
 cake.addEventListener(
 "mousemove",
-()=>{
+(e)=>{
 
-if(isDragging){
+if(e.buttons === 1){
 
 document
 .querySelectorAll(
@@ -393,7 +455,45 @@ finalCake.addEventListener(
 let moveX =
 e.touches[0].clientX;
 
-if(moveX - finalStart > 100){
+if(Math.abs(moveX - finalStart) > 80){
+
+document
+.querySelectorAll(
+".cakeWrap"
+)[1]
+.classList.add(
+"cakeCut"
+);
+
+createStars();
+
+setTimeout(()=>{
+
+finalCakeScreen
+.classList.remove(
+"active"
+);
+
+birthdayScreen
+.classList.add(
+"active"
+);
+
+bgMusic.play();
+
+},700);
+
+}
+
+});
+
+/* DESKTOP */
+
+finalCake.addEventListener(
+"mousemove",
+(e)=>{
+
+if(e.buttons === 1){
 
 document
 .querySelectorAll(
