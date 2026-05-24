@@ -23,8 +23,6 @@ linear-gradient(
 position:relative;
 }
 
-/* SCREEN */
-
 .screen{
 
 width:100%;
@@ -107,6 +105,16 @@ margin-bottom:20px;
 position:relative;
 }
 
+.cakeArea{
+
+position:relative;
+
+display:flex;
+
+justify-content:center;
+align-items:center;
+}
+
 #cake,
 #finalCake{
 
@@ -150,15 +158,16 @@ rotate(8deg);
 opacity:0;
 }
 
-/* SIDE KNIFE */
+/* KNIFE */
 
-.sideKnife{
+#dragKnife,
+#dragKnifeFinal{
 
-width:120px;
+width:110px;
 
 position:absolute;
 
-left:-120px;
+left:-130px;
 
 top:50%;
 
@@ -166,8 +175,13 @@ transform:
 translateY(-50%)
 rotate(-20deg);
 
-animation:
-knifeFloat 2s infinite;
+z-index:5;
+
+cursor:grab;
+
+touch-action:none;
+
+transition:0.2s;
 }
 
 /* BUTTON */
@@ -316,6 +330,8 @@ object-fit:cover;
 
 border-radius:30px;
 
+flex-shrink:0;
+
 box-shadow:
 0px 10px 20px
 rgba(0,0,0,0.2);
@@ -430,28 +446,6 @@ blast 1s linear forwards;
 
 /* ANIMATION */
 
-@keyframes knifeFloat{
-
-0%{
-transform:
-translateY(-50%)
-rotate(-20deg);
-}
-
-50%{
-transform:
-translateY(-60%)
-rotate(-15deg);
-}
-
-100%{
-transform:
-translateY(-50%)
-rotate(-20deg);
-}
-
-}
-
 @keyframes scroll{
 
 from{
@@ -563,7 +557,8 @@ height:55px;
 width:290px;
 }
 
-.sideKnife{
+#dragKnife,
+#dragKnifeFinal{
 
 width:80px;
 
