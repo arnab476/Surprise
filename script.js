@@ -1,11 +1,20 @@
-// script.js
+const knifeCursor = document.getElementById("knifeCursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+  knifeCursor.style.left = e.clientX + "px";
+  knifeCursor.style.top = e.clientY + "px";
+
+});
 
 const cakeScreen = document.getElementById("cakeScreen");
 const funnyScreen = document.getElementById("funnyScreen");
 const puzzleScreen = document.getElementById("puzzleScreen");
-const galleryScreen = document.getElementById("galleryScreen");
+const finalCakeScreen = document.getElementById("finalCakeScreen");
+const birthdayScreen = document.getElementById("birthdayScreen");
 
-const cutCakeBtn = document.getElementById("cutCakeBtn");
+const cake = document.getElementById("cake");
+const finalCake = document.getElementById("finalCake");
 
 const solveBtn = document.getElementById("solveBtn");
 const skipBtn = document.getElementById("skipBtn");
@@ -16,9 +25,11 @@ const completePuzzle = document.getElementById("completePuzzle");
 
 const bgMusic = document.getElementById("bgMusic");
 
-/* CAKE BUTTON */
+/* FIRST CAKE */
 
-cutCakeBtn.addEventListener("click",()=>{
+cake.addEventListener("contextmenu",(e)=>{
+
+  e.preventDefault();
 
   cakeScreen.classList.remove("active");
 
@@ -26,9 +37,9 @@ cutCakeBtn.addEventListener("click",()=>{
 
 });
 
-/* SKIP BUTTON FUNNY */
+/* SKIP BUTTON */
 
-skipBtn.addEventListener("click",()=>{
+skipBtn.addEventListener("mouseover",()=>{
 
   monkeyPopup.style.display = "flex";
 
@@ -36,19 +47,19 @@ skipBtn.addEventListener("click",()=>{
 
     monkeyPopup.style.display = "none";
 
-  },2000);
+  },1500);
+
+  const randomX = Math.random() * 300;
+  const randomY = Math.random() * 500;
 
   skipBtn.style.position = "absolute";
-
-  const randomX = Math.random() * 200;
-  const randomY = Math.random() * 500;
 
   skipBtn.style.left = randomX + "px";
   skipBtn.style.top = randomY + "px";
 
 });
 
-/* SOLVE BUTTON */
+/* PUZZLE */
 
 solveBtn.addEventListener("click",()=>{
 
@@ -58,14 +69,32 @@ solveBtn.addEventListener("click",()=>{
 
 });
 
-/* COMPLETE PUZZLE */
+/* COMPLETE */
 
 completePuzzle.addEventListener("click",()=>{
 
   puzzleScreen.classList.remove("active");
 
-  galleryScreen.classList.add("active");
+  finalCakeScreen.classList.add("active");
 
-  bgMusic.play();
+});
+
+/* FINAL CAKE */
+
+finalCake.addEventListener("contextmenu",(e)=>{
+
+  e.preventDefault();
+
+  finalCake.style.transform = "scaleX(0.8) rotate(5deg)";
+
+  setTimeout(()=>{
+
+    finalCakeScreen.classList.remove("active");
+
+    birthdayScreen.classList.add("active");
+
+    bgMusic.play();
+
+  },1000);
 
 });
