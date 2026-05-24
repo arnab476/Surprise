@@ -1,128 +1,217 @@
-const knifeCursor = document.getElementById("knifeCursor");
+const knifeCursor =
+document.getElementById(
+"knifeCursor"
+);
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener(
+"mousemove",
+(e)=>{
 
-  knifeCursor.style.left = e.clientX + "px";
-  knifeCursor.style.top = e.clientY + "px";
+knifeCursor.style.left =
+e.clientX + "px";
+
+knifeCursor.style.top =
+e.clientY + "px";
 
 });
 
 /* SCREENS */
 
-const cakeScreen = document.getElementById("cakeScreen");
-const funnyScreen = document.getElementById("funnyScreen");
-const puzzleScreen = document.getElementById("puzzleScreen");
-const finalCakeScreen = document.getElementById("finalCakeScreen");
-const birthdayScreen = document.getElementById("birthdayScreen");
+const cakeScreen =
+document.getElementById(
+"cakeScreen"
+);
+
+const funnyScreen =
+document.getElementById(
+"funnyScreen"
+);
+
+const puzzleScreen =
+document.getElementById(
+"puzzleScreen"
+);
+
+const finalCakeScreen =
+document.getElementById(
+"finalCakeScreen"
+);
+
+const birthdayScreen =
+document.getElementById(
+"birthdayScreen"
+);
 
 /* ELEMENTS */
 
-const cake = document.getElementById("cake");
-const finalCake = document.getElementById("finalCake");
+const cake =
+document.getElementById(
+"cake"
+);
 
-const solveBtn = document.getElementById("solveBtn");
-const skipBtn = document.getElementById("skipBtn");
+const finalCake =
+document.getElementById(
+"finalCake"
+);
 
-const monkeyPopup = document.getElementById("monkeyPopup");
+const solveBtn =
+document.getElementById(
+"solveBtn"
+);
 
-const completePuzzle = document.getElementById("completePuzzle");
+const skipBtn =
+document.getElementById(
+"skipBtn"
+);
 
-const bgMusic = document.getElementById("bgMusic");
+const monkeyPopup =
+document.getElementById(
+"monkeyPopup"
+);
 
-/* REAL PUZZLE */
+const completePuzzle =
+document.getElementById(
+"completePuzzle"
+);
 
-const puzzleGrid =
-document.querySelector(".puzzleGrid");
+const bgMusic =
+document.getElementById(
+"bgMusic"
+);
 
-puzzleGrid.innerHTML = `
-  <div class="piece piece3"></div>
-  <div class="piece piece1"></div>
-  <div class="piece piece4"></div>
-  <div class="piece piece2"></div>
-`;
+/* PUZZLE */
+
+const pieces =
+document.querySelectorAll(
+".piece"
+);
+
+const positions = [
+
+"0px 0px",
+"-68px 0px",
+"-136px 0px",
+"-204px 0px",
+"-272px 0px",
+
+"0px -68px",
+"-68px -68px",
+"-136px -68px",
+"-204px -68px",
+"-272px -68px"
+
+];
+
+pieces.forEach((piece,index)=>{
+
+piece.style.backgroundPosition =
+positions[
+Math.floor(
+Math.random()*10
+)
+];
+
+});
 
 /* FIRST CAKE */
 
 let isDragging = false;
 
-cake.addEventListener("mousedown",()=>{
+cake.addEventListener(
+"mousedown",
+()=>{
 
-  isDragging = true;
-
-});
-
-document.addEventListener("mouseup",()=>{
-
-  isDragging = false;
+isDragging = true;
 
 });
 
-cake.addEventListener("mousemove",()=>{
+document.addEventListener(
+"mouseup",
+()=>{
 
-  if(isDragging){
+isDragging = false;
 
-    cake.classList.add("cakeCut");
+});
 
-    setTimeout(()=>{
+cake.addEventListener(
+"mousemove",
+()=>{
 
-      cakeScreen.classList.remove("active");
+if(isDragging){
 
-      funnyScreen.classList.add("active");
+document
+.querySelector(".cakeWrap")
+.classList.add("cakeCut");
 
-      cake.classList.remove("cakeCut");
+setTimeout(()=>{
 
-    },700);
+cakeScreen
+.classList.remove(
+"active"
+);
 
-  }
+funnyScreen
+.classList.add(
+"active"
+);
+
+},700);
+
+}
 
 });
 
 /* SKIP BUTTON */
 
-skipBtn.addEventListener("mouseover",()=>{
+skipBtn.addEventListener(
+"mouseover",
+()=>{
 
-  monkeyPopup.innerHTML = `
-    <img src="monkey.jpg" class="monkey">
-    <div class="popupText">
-      Eto soja na 😭
-    </div>
-  `;
+monkeyPopup.style.display =
+"flex";
 
-  monkeyPopup.style.display = "flex";
+setTimeout(()=>{
 
-  setTimeout(()=>{
+monkeyPopup.style.display =
+"none";
 
-    monkeyPopup.style.display = "none";
-
-  },1200);
-
-  const randomX = Math.random() * 500;
-  const randomY = Math.random() * 500;
-
-  skipBtn.style.position = "absolute";
-
-  skipBtn.style.left = randomX + "px";
-  skipBtn.style.top = randomY + "px";
+},1200);
 
 });
 
-/* PUZZLE */
+/* PUZZLE OPEN */
 
-solveBtn.addEventListener("click",()=>{
+solveBtn.addEventListener(
+"click",
+()=>{
 
-  funnyScreen.classList.remove("active");
+funnyScreen
+.classList.remove(
+"active"
+);
 
-  puzzleScreen.classList.add("active");
+puzzleScreen
+.classList.add(
+"active"
+);
 
 });
 
 /* COMPLETE */
 
-completePuzzle.addEventListener("click",()=>{
+completePuzzle.addEventListener(
+"click",
+()=>{
 
-  puzzleScreen.classList.remove("active");
+puzzleScreen
+.classList.remove(
+"active"
+);
 
-  finalCakeScreen.classList.add("active");
+finalCakeScreen
+.classList.add(
+"active"
+);
 
 });
 
@@ -130,36 +219,47 @@ completePuzzle.addEventListener("click",()=>{
 
 let finalDragging = false;
 
-finalCake.addEventListener("mousedown",()=>{
+finalCake.addEventListener(
+"mousedown",
+()=>{
 
-  finalDragging = true;
-
-});
-
-document.addEventListener("mouseup",()=>{
-
-  finalDragging = false;
+finalDragging = true;
 
 });
 
-finalCake.addEventListener("mousemove",()=>{
+document.addEventListener(
+"mouseup",
+()=>{
 
-  if(finalDragging){
+finalDragging = false;
 
-    finalCake.classList.add("cakeCut");
+});
 
-    setTimeout(()=>{
+finalCake.addEventListener(
+"mousemove",
+()=>{
 
-      finalCakeScreen.classList.remove("active");
+if(finalDragging){
 
-      birthdayScreen.classList.add("active");
+finalCake.style.transform =
+"scale(0.8) rotate(8deg)";
 
-      bgMusic.play();
+setTimeout(()=>{
 
-      finalCake.classList.remove("cakeCut");
+finalCakeScreen
+.classList.remove(
+"active"
+);
 
-    },700);
+birthdayScreen
+.classList.add(
+"active"
+);
 
-  }
+bgMusic.play();
+
+},700);
+
+}
 
 });
