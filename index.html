@@ -3,200 +3,193 @@
 
 <head>
 
-  <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-  <meta name="viewport"
-  content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-  <title>Birthday Surprise 🎂</title>
+<title>Birthday Surprise 🎂</title>
 
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="style.css">
 
 </head>
 
 <body>
 
-  <!-- MUSIC -->
+<audio id="bgMusic" loop>
 
-  <audio id="bgMusic" loop>
+<source src="song.mp3"
+type="audio/mp3">
 
-    <source src="song.mp3" type="audio/mp3">
+</audio>
 
-  </audio>
+<div class="petals"></div>
 
-  <!-- PETALS -->
+<!-- FIRST SCREEN -->
 
-  <div class="petals"></div>
+<section id="cakeScreen"
+class="screen active">
 
-  <!-- KNIFE -->
+<h1 class="mainText">
+Jonmodine cake katte hobe je 🎂
+</h1>
 
-  <img src="knife.png"
-  id="knifeCursor">
+<p class="instruction">
+Cake ta swipe koro 😭
+</p>
 
-  <!-- FIRST SCREEN -->
+<div class="cakeWrap">
 
-  <section id="cakeScreen"
-  class="screen active">
+<img src="knife.png"
+class="sideKnife">
 
-    <h1 class="mainText">
-      Jonmodine cake katte hobe je 🎂
-    </h1>
+<img src="cake.png"
+id="cake">
 
-    <p class="instruction">
-      Swipe right kore cake kato 😭
-    </p>
+<div class="cakeCrack"></div>
 
-    <div class="cakeWrap">
+</div>
 
-      <img src="cake.png"
-      id="cake">
+</section>
 
-      <div class="cakeCrack"></div>
+<!-- FUNNY SCREEN -->
 
-    </div>
+<section id="funnyScreen"
+class="screen">
 
-  </section>
+<h1 class="funnyTitle">
+Age eta solve kor 😭
+</h1>
 
-  <!-- FUNNY SCREEN -->
+<div class="btnGroup">
 
-  <section id="funnyScreen"
-  class="screen">
+<button id="solveBtn">
+Solve Puzzle 🧩
+</button>
 
-    <h1 class="funnyTitle">
-      Age eta solve kor 😭
-    </h1>
+<button id="skipBtn">
+Skip 🙂
+</button>
 
-    <div class="btnGroup">
+</div>
 
-      <button id="solveBtn">
-        Solve Puzzle 🧩
-      </button>
+</section>
 
-      <button id="skipBtn">
-        Skip 🙂
-      </button>
+<!-- MONKEY -->
 
-    </div>
+<div id="monkeyPopup">
 
-  </section>
+<img src="monkey.jpg"
+class="monkey">
 
-  <!-- MONKEY -->
+<div class="popupText">
+Eto soja na 😭
+</div>
 
-  <div id="monkeyPopup">
+</div>
 
-    <img src="monkey.jpg"
-    class="monkey">
+<!-- PUZZLE -->
 
-    <div class="popupText">
-      Eto soja na 😭
-    </div>
+<section id="puzzleScreen"
+class="screen">
 
-  </div>
+<h1 class="puzzleText">
+Puzzle Solve Koro 😭
+</h1>
 
-  <!-- PUZZLE -->
+<div class="puzzleGrid"></div>
 
-  <section id="puzzleScreen"
-  class="screen">
+<button id="completePuzzle">
+Complete 😎
+</button>
 
-    <h1 class="puzzleText">
-      Puzzle Solve Koro 😭
-    </h1>
+</section>
 
-    <div class="puzzleGrid"></div>
+<!-- FINAL CAKE -->
 
-    <button id="completePuzzle">
-      Complete 😎
-    </button>
+<section id="finalCakeScreen"
+class="screen">
 
-  </section>
+<h1 class="mainText">
+Ebar Cake Kato 😭
+</h1>
 
-  <!-- FINAL CAKE -->
+<div class="cakeWrap">
 
-  <section id="finalCakeScreen"
-  class="screen">
+<img src="knife.png"
+class="sideKnife">
 
-    <h1 class="mainText">
-      Ebar Cake Kato 😭
-    </h1>
+<img src="cake.png"
+id="finalCake">
 
-    <p class="instruction">
-      Swipe swipe 😭
-    </p>
+<div class="cakeCrack"></div>
 
-    <div class="cakeWrap">
+</div>
 
-      <img src="cake.png"
-      id="finalCake">
+</section>
 
-      <div class="cakeCrack"></div>
+<!-- FINAL -->
 
-    </div>
+<section id="birthdayScreen"
+class="screen">
 
-  </section>
+<div class="sparkles"></div>
 
-  <!-- FINAL -->
+<h1 class="birthdayText">
+Happy Birthday 🎉
+</h1>
 
-  <section id="birthdayScreen"
-  class="screen">
+<div class="carousel">
 
-    <div class="sparkles"></div>
+<div class="carouselTrack">
 
-    <h1 class="birthdayText">
-      Happy Birthday 🎉
-    </h1>
+<img src="photo1.jpg">
+<img src="photo2.jpg">
+<img src="photo3.jpg">
+<img src="photo4.jpg">
+<img src="photo5.jpg">
+<img src="photo6.jpg">
+<img src="photo7.jpg">
+<img src="photo8.jpg">
+<img src="photo9.jpg">
+<img src="photo10.jpg">
 
-    <div class="carousel">
+<img src="photo11.jpg">
+<img src="photo12.jpg">
+<img src="photo13.jpg">
+<img src="photo14.jpg">
+<img src="photo15.jpg">
+<img src="photo16.jpg">
+<img src="photo17.jpg">
+<img src="photo18.jpg">
+<img src="photo19.jpg">
+<img src="photo20.jpg">
 
-      <div class="carouselTrack">
+</div>
 
-        <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
-        <img src="photo4.jpg">
-        <img src="photo5.jpg">
-        <img src="photo6.jpg">
-        <img src="photo7.jpg">
-        <img src="photo8.jpg">
-        <img src="photo9.jpg">
-        <img src="photo10.jpg">
-        <img src="photo11.jpg">
-        <img src="photo12.jpg">
-        <img src="photo13.jpg">
-        <img src="photo14.jpg">
-        <img src="photo15.jpg">
-        <img src="photo16.jpg">
-        <img src="photo17.jpg">
-        <img src="photo18.jpg">
-        <img src="photo19.jpg">
-        <img src="photo20.jpg">
+</div>
 
-      </div>
+<div class="musicPlayer">
 
-    </div>
+<div class="bars">
 
-    <!-- PLAYER -->
+<span></span>
+<span></span>
+<span></span>
+<span></span>
 
-    <div class="musicPlayer">
+</div>
 
-      <div class="bars">
+<div class="songText">
+Music Playing 🎵
+</div>
 
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+</div>
 
-      </div>
+</section>
 
-      <div class="songText">
-        Music Playing 🎵
-      </div>
-
-    </div>
-
-  </section>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
-
 </html>
