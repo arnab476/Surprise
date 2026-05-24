@@ -15,9 +15,9 @@ font-family:'Poppins',sans-serif;
 background:
 linear-gradient(
 135deg,
-#fff7c7,
+#fff8cc,
 #ffe066,
-#ffffff
+#fffdf3
 );
 
 position:relative;
@@ -40,6 +40,8 @@ flex-direction:column;
 padding:20px;
 
 position:relative;
+
+overflow:hidden;
 }
 
 .active{
@@ -60,9 +62,11 @@ cursive;
 
 .mainText{
 
-font-size:58px;
+font-size:56px;
 
 margin-bottom:10px;
+
+text-align:center;
 }
 
 .instruction{
@@ -72,25 +76,31 @@ font-size:18px;
 margin-bottom:20px;
 
 font-weight:600;
+
+text-align:center;
 }
 
 .funnyTitle,
 .puzzleText{
 
-font-size:58px;
+font-size:54px;
 
 margin-bottom:25px;
+
+text-align:center;
 }
 
 .birthdayText{
 
-font-size:90px;
+font-size:82px;
 
 color:white;
 
 text-shadow:
 0px 0px 20px
 #ff3f8e;
+
+margin-bottom:20px;
 }
 
 /* CAKE */
@@ -108,7 +118,7 @@ align-items:center;
 #cake,
 #finalCake{
 
-width:550px;
+width:500px;
 
 transition:1s;
 }
@@ -139,8 +149,8 @@ transition:0.5s;
 .cakeCut #finalCake{
 
 transform:
-scale(0.85)
-rotate(8deg);
+scale(0.8)
+rotate(10deg);
 
 opacity:0;
 }
@@ -154,7 +164,7 @@ width:110px;
 
 position:absolute;
 
-left:-130px;
+left:-120px;
 
 top:50%;
 
@@ -180,7 +190,7 @@ gap:20px;
 
 button{
 
-padding:18px 35px;
+padding:16px 34px;
 
 border:none;
 
@@ -193,6 +203,10 @@ color:white;
 font-size:18px;
 
 font-weight:700;
+
+box-shadow:
+0px 8px 20px
+rgba(0,0,0,0.15);
 }
 
 /* MONKEY */
@@ -218,7 +232,7 @@ z-index:9999;
 
 .monkey{
 
-width:250px;
+width:240px;
 
 border-radius:20px;
 
@@ -229,7 +243,11 @@ margin-bottom:20px;
 
 color:white;
 
-font-size:40px;
+font-size:34px;
+
+font-family:
+'Great Vibes',
+cursive;
 }
 
 /* PUZZLE */
@@ -254,7 +272,7 @@ width:68px;
 height:68px;
 
 background-image:
-url('./photo21.jpg');
+url('./photo21.png');
 
 background-size:
 340px 204px;
@@ -268,20 +286,15 @@ border:2px solid white;
 cursor:pointer;
 
 transition:0.2s;
+
+box-shadow:
+0px 4px 10px
+rgba(0,0,0,0.15);
 }
 
 .piece.selected{
 
 outline:4px solid yellow;
-}
-
-/* COMPLETE BUTTON */
-
-#completePuzzle{
-
-opacity:1;
-
-pointer-events:auto;
 }
 
 /* CAROUSEL */
@@ -297,7 +310,7 @@ overflow:hidden;
 
 display:flex;
 
-gap:20px;
+gap:18px;
 
 width:max-content;
 
@@ -307,15 +320,15 @@ scroll 60s linear infinite;
 
 .carouselTrack img{
 
-width:300px;
-height:520px;
+width:240px;
+height:400px;
 
 object-fit:cover;
 
-border-radius:30px;
+border-radius:25px;
 }
 
-/* PLAYER */
+/* MUSIC PLAYER */
 
 .musicPlayer{
 
@@ -329,6 +342,44 @@ background:white;
 padding:12px 18px;
 
 border-radius:20px;
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+}
+
+.bars{
+
+display:flex;
+
+gap:4px;
+}
+
+.bars span{
+
+width:4px;
+height:18px;
+
+background:#ff3f8e;
+
+border-radius:10px;
+
+animation:
+music 1s infinite alternate;
+}
+
+.bars span:nth-child(2){
+animation-delay:0.2s;
+}
+
+.bars span:nth-child(3){
+animation-delay:0.4s;
+}
+
+.bars span:nth-child(4){
+animation-delay:0.6s;
 }
 
 /* PETALS */
@@ -340,6 +391,8 @@ position:fixed;
 inset:0;
 
 pointer-events:none;
+
+overflow:hidden;
 }
 
 .petals span{
@@ -370,7 +423,7 @@ transparent 2px
 background-size:
 40px 40px;
 
-opacity:0.5;
+opacity:0.4;
 }
 
 /* ANIMATION */
@@ -388,12 +441,25 @@ translateX(-50%);
 
 }
 
+@keyframes music{
+
+from{
+height:10px;
+}
+
+to{
+height:28px;
+}
+
+}
+
 @keyframes fall{
 
 0%{
 
 transform:
-translateY(-120px);
+translateY(-120px)
+rotate(0deg);
 
 opacity:1;
 }
@@ -401,7 +467,8 @@ opacity:1;
 100%{
 
 transform:
-translateY(110vh);
+translateY(110vh)
+rotate(360deg);
 
 opacity:0;
 }
@@ -412,41 +479,55 @@ opacity:0;
 
 @media(max-width:768px){
 
-.mainText,
+.mainText{
+
+font-size:34px;
+}
+
+.instruction{
+
+font-size:14px;
+}
+
 .funnyTitle,
 .puzzleText{
 
-font-size:42px;
+font-size:36px;
 }
 
 .birthdayText{
 
-font-size:58px;
+font-size:48px;
 }
 
 #cake,
 #finalCake{
 
-width:320px;
+width:300px;
 }
 
 .carouselTrack img{
 
-width:180px;
-height:320px;
+width:170px;
+height:280px;
 }
 
 #dragKnife,
 #dragKnifeFinal{
 
-width:80px;
+width:70px;
 
-left:-70px;
+left:-60px;
 }
 
 .puzzleGrid{
 
 width:360px;
+}
+
+.petals span{
+
+font-size:22px;
 }
 
 }
