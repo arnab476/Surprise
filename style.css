@@ -8,7 +8,8 @@ box-sizing:border-box;
 
 body{
 
-overflow:hidden;
+overflow-x:hidden;
+overflow-y:auto;
 
 font-family:'Poppins',sans-serif;
 
@@ -28,7 +29,7 @@ position:relative;
 .screen{
 
 width:100%;
-height:100vh;
+min-height:100vh;
 
 display:none;
 
@@ -64,16 +65,16 @@ cursive;
 
 font-size:56px;
 
-margin-bottom:10px;
-
 text-align:center;
+
+margin-bottom:12px;
 }
 
 .instruction{
 
 font-size:18px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
 font-weight:600;
 
@@ -101,6 +102,9 @@ text-shadow:
 #ff3f8e;
 
 margin-bottom:20px;
+
+animation:
+glowPulse 2s infinite;
 }
 
 /* CAKE */
@@ -113,12 +117,19 @@ display:flex;
 
 justify-content:center;
 align-items:center;
+
+margin-top:10px;
 }
 
 #cake,
 #finalCake{
 
 width:500px;
+
+display:block;
+
+animation:
+cakeFloat 3s ease-in-out infinite;
 
 transition:1s;
 }
@@ -166,17 +177,14 @@ position:absolute;
 
 left:-120px;
 
-top:50%;
+top:70%;
 
 transform:
-translateY(-50%)
 rotate(-20deg);
 
 z-index:5;
 
 touch-action:none;
-
-user-select:none;
 }
 
 /* BUTTON */
@@ -185,12 +193,12 @@ user-select:none;
 
 display:flex;
 
-gap:20px;
+gap:18px;
 }
 
 button{
 
-padding:16px 34px;
+padding:15px 30px;
 
 border:none;
 
@@ -200,13 +208,16 @@ background:#ff3f8e;
 
 color:white;
 
-font-size:18px;
+font-size:17px;
 
 font-weight:700;
 
 box-shadow:
 0px 8px 20px
 rgba(0,0,0,0.15);
+
+animation:
+buttonBounce 2s infinite;
 }
 
 /* MONKEY */
@@ -225,18 +236,18 @@ align-items:center;
 flex-direction:column;
 
 background:
-rgba(0,0,0,0.9);
+rgba(0,0,0,0.85);
 
 z-index:9999;
 }
 
 .monkey{
 
-width:240px;
+width:230px;
 
 border-radius:20px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 .popupText{
@@ -283,13 +294,18 @@ border-radius:10px;
 
 border:2px solid white;
 
-cursor:pointer;
-
 transition:0.2s;
 
 box-shadow:
 0px 4px 10px
 rgba(0,0,0,0.15);
+}
+
+.piece:hover{
+
+transform:
+scale(1.08)
+rotate(2deg);
 }
 
 .piece.selected{
@@ -304,18 +320,20 @@ outline:4px solid yellow;
 width:100%;
 
 overflow:hidden;
+
+margin-top:15px;
 }
 
 .carouselTrack{
 
 display:flex;
 
-gap:18px;
+gap:15px;
 
 width:max-content;
 
 animation:
-scroll 60s linear infinite;
+scroll 45s linear infinite;
 }
 
 .carouselTrack img{
@@ -326,20 +344,31 @@ height:400px;
 object-fit:cover;
 
 border-radius:25px;
+
+transition:0.5s;
 }
 
-/* MUSIC PLAYER */
+.carouselTrack img:hover{
+
+transform:
+scale(1.06);
+}
+
+/* PLAYER */
 
 .musicPlayer{
 
 position:absolute;
 
-bottom:20px;
-right:20px;
+bottom:15px;
+right:50%;
+
+transform:
+translateX(50%);
 
 background:white;
 
-padding:12px 18px;
+padding:10px 16px;
 
 border-radius:20px;
 
@@ -347,7 +376,7 @@ display:flex;
 
 align-items:center;
 
-gap:12px;
+gap:10px;
 }
 
 .bars{
@@ -370,18 +399,6 @@ animation:
 music 1s infinite alternate;
 }
 
-.bars span:nth-child(2){
-animation-delay:0.2s;
-}
-
-.bars span:nth-child(3){
-animation-delay:0.4s;
-}
-
-.bars span:nth-child(4){
-animation-delay:0.6s;
-}
-
 /* PETALS */
 
 .petals{
@@ -399,10 +416,12 @@ overflow:hidden;
 
 position:absolute;
 
-font-size:28px;
+font-size:22px;
+
+opacity:0.7;
 
 animation:
-fall linear infinite;
+fallMobile linear infinite;
 }
 
 /* SPARKLES */
@@ -421,7 +440,7 @@ transparent 2px
 );
 
 background-size:
-40px 40px;
+30px 30px;
 
 opacity:0.4;
 }
@@ -453,7 +472,64 @@ height:28px;
 
 }
 
-@keyframes fall{
+@keyframes glowPulse{
+
+0%{
+
+text-shadow:
+0px 0px 10px #ff4f95;
+}
+
+50%{
+
+text-shadow:
+0px 0px 35px #ff4f95;
+}
+
+100%{
+
+text-shadow:
+0px 0px 10px #ff4f95;
+}
+
+}
+
+@keyframes cakeFloat{
+
+0%{
+transform:
+translateY(0px);
+}
+
+50%{
+transform:
+translateY(-12px);
+}
+
+100%{
+transform:
+translateY(0px);
+}
+
+}
+
+@keyframes buttonBounce{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.04);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes fallMobile{
 
 0%{
 
@@ -461,13 +537,17 @@ transform:
 translateY(-120px)
 rotate(0deg);
 
+opacity:0;
+}
+
+10%{
 opacity:1;
 }
 
 100%{
 
 transform:
-translateY(110vh)
+translateY(120vh)
 rotate(360deg);
 
 opacity:0;
@@ -481,53 +561,81 @@ opacity:0;
 
 .mainText{
 
-font-size:34px;
+font-size:30px;
+
+line-height:1.2;
+
+padding:0px 18px;
 }
 
 .instruction{
 
-font-size:14px;
+font-size:15px;
+
+padding:0px 15px;
 }
 
 .funnyTitle,
 .puzzleText{
 
 font-size:36px;
+
+padding:0px 20px;
 }
 
 .birthdayText{
 
-font-size:48px;
+font-size:44px;
+
+padding:0px 12px;
 }
 
 #cake,
 #finalCake{
 
-width:300px;
-}
+width:88vw;
 
-.carouselTrack img{
-
-width:170px;
-height:280px;
+max-width:340px;
 }
 
 #dragKnife,
 #dragKnifeFinal{
 
-width:70px;
+width:72px;
 
-left:-60px;
+left:-35px;
+
+top:75%;
 }
 
 .puzzleGrid{
 
-width:360px;
+width:92vw;
+
+max-width:360px;
+}
+
+.piece{
+
+width:17vw;
+height:17vw;
+
+max-width:68px;
+max-height:68px;
+}
+
+.carouselTrack img{
+
+width:42vw;
+height:68vw;
+
+max-width:190px;
+max-height:300px;
 }
 
 .petals span{
 
-font-size:22px;
+font-size:20px;
 }
 
 }
